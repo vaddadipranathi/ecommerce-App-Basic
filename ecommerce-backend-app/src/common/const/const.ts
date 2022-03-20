@@ -1,4 +1,4 @@
 /* eslint-disable prettier/prettier */
-class Constants {
-  emailID: string;
+export class Constants {
+ static emailID: string;
 }

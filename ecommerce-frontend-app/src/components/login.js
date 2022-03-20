@@ -28,16 +28,12 @@ class LoginComponent extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const emailID = {
-        emailID: this.state.emailID,
-    };
     this.props.login(
-      emailID
+      this.state.emailID,
+      this.props.history
     );
   };
   render() {
-    const loginUser = this.props.loginUser;
-    console.log("loginUser",loginUser);
     return (
       <div className="container">
         <form className="container" onSubmit={this.onSubmit}>

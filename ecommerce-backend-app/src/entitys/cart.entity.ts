@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { ApiProperty } from '@nestjs/swagger';
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
-import { IsNumber, IsString } from 'class-validator';
+import { IsEmail, IsNumber, IsString } from 'class-validator';
 /**
  * starting of Cart Entity
  */
@@ -26,6 +26,11 @@ export class Cart {
   @Column()
   @IsNumber()
   productsId: number;
+
+  @Column()
+  @IsEmail()
+  emailID: string;
+
 
 
   /**

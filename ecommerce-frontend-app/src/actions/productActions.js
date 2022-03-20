@@ -40,10 +40,15 @@ export const addUser = (user) => async (dispatch) => {
   }
 };
 
-export const login = (emailID) => async (dispatch) => {
+export const login = (emailID, history) => async (dispatch) => {
   const res = await axios.get(`user/login/${emailID}`);
   dispatch({
     type: LOGIN_USER,
     payload: res.data,
   });
+  if (res.data === true) {
+    history.push("/allProducts");
+  } else {
+    window.alert("login again");
+  }
 };

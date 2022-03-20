@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Constants } from 'src/common/const/const';
 import { Logger } from 'src/config/logger/logger.service';
 import { Repository } from 'typeorm';
 import { User } from './../../entitys/user.entity';
@@ -15,7 +16,6 @@ export class UserService {
 
   async addUser(userDto: UserDto) {
     const user = new User();
-    console.log('hi');
     Object.assign(user, userDto);
     user.status = true;
     return await this.userRepository.save(user);
@@ -32,11 +32,10 @@ export class UserService {
   }
 
   async login(emailID: string) {
-    const result = this.getUserOnEmail(emailID);
+    const result = await this.getUserOnEmail(emailID);
     if (result) {
+      Constants.emailID = emailID;
       return true;
-    } else {
-      return false;
     }
   }
 }
